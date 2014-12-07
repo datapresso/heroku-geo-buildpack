@@ -105,6 +105,8 @@ set-env GDAL_DATA "$APP_GDAL/share/gdal"
 
 # Update system path, 12/7/14 added by C.Ding
 export PATH="$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH:\$PATH:"
+echo $PATH
+echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # Bundle workaround
 mkdir -p $BUILD_DIR/.bundle
