@@ -103,6 +103,9 @@ set-env GDAL_LIBRARY_PATH "$APP_GDAL/lib"
 set-env PROJ4_LIBRARY_PATH "$APP_PROJ/lib"
 set-env GDAL_DATA "$APP_GDAL/share/gdal"
 
+# Update system path, 12/7/14 added by C.Ding
+export PATH="$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH:\$PATH:"
+
 # Bundle workaround
 mkdir -p $BUILD_DIR/.bundle
 if [ -f $CACHE_DIR/.bundle/config ]; then
