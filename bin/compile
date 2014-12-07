@@ -106,8 +106,14 @@ set-env GDAL_DATA "$APP_GDAL/share/gdal"
 # Update system path, 12/7/14 added by C.Ding
 set-env PATH "$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH"
 export MYPATH="$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH"
+export PATH="$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH"
+export CPPPATH="\$CPPPATH:$CPPPATH:$APP_GEOS/include:$APP_GDAL/include:$APP_PROJ/include"
+export CPATH="\$CPATH:$CPATH:$APP_GEOS/include:$APP_GDAL/include:$APP_PROJ/include"
+export LIBRARY_PATH="\$LIBRARY_PATH:$LIBRARY_PATH:$APP_GEOS/lib:$APP_GDAL/lib:$APP_PROJ/lib"
+export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:$LD_LIBRARY_PATH:$APP_GEOS/lib:$APP_GDAL/lib:$APP_PROJ/lib"
 echo $PATH
 echo $MYPATH
+echo $LD_LIBRARY_PATH
 echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # Bundle workaround
