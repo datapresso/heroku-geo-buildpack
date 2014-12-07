@@ -104,8 +104,10 @@ set-env PROJ4_LIBRARY_PATH "$APP_PROJ/lib"
 set-env GDAL_DATA "$APP_GDAL/share/gdal"
 
 # Update system path, 12/7/14 added by C.Ding
-export PATH="$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH:\$PATH:"
+set-env PATH "$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH"
+export MYPATH="$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH"
 echo $PATH
+echo $MYPATH
 echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # Bundle workaround
@@ -125,6 +127,6 @@ BUNDLE_DISABLE_SHARED_GEMS: '1'
 set-default-env LIBRARY_PATH "$APP_GEOS/lib:$APP_GDAL/lib:$APP_PROJ/lib"
 set-default-env LD_LIBRARY_PATH "$APP_GEOS/lib:$APP_GDAL/lib:$APP_PROJ/lib"
 set-default-env CPATH "$APP_GEOS/include:$APP_GDAL/include:$APP_PROJ/include"
-set-default-env PATH "$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH:\$PATH:"
+set-default-env PATH "$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH"
 
 echo "-----> Vendoring geo libraries done"
