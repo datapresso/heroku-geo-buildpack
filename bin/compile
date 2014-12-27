@@ -63,9 +63,14 @@ echo "Using gdal version: ${GDAL_VERSION}" | indent
 echo "Using proj version: ${PROJ_VERSION}" | indent
 
 # Vendor directories
-VENDORED_GEOS="vendor/geos/$GEOS_VERSION"
-VENDORED_GDAL="vendor/gdal/$GDAL_VERSION"
-VENDORED_PROJ="vendor/proj/$PROJ_VERSION"
+## 12/27/14 C.Ding removed version
+##VENDORED_GEOS="vendor/geos/$GEOS_VERSION"
+##VENDORED_GDAL="vendor/gdal/$GDAL_VERSION"
+##VENDORED_PROJ="vendor/proj/$PROJ_VERSION"
+VENDORED_GEOS="vendor/geos"
+VENDORED_GDAL="vendor/gdal"
+VENDORED_PROJ="vendor/proj"
+
 
 if [ ! -d $CACHE_DIR/$VENDORED_GEOS ]; then
   echo "-----> Fetching and vendoring geos"
@@ -110,15 +115,17 @@ cat <<EOF >> $PROFILE_PATH
 export MYPATH="$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH"
 export PATH=$APP_GEOS/bin:$APP_GDAL/bin:$APP_PROJ/bin:$PATH
 export CPPPATH=$CPPPATH:$CPPPATH:$APP_GEOS/include:$APP_GDAL/include:$APP_PROJ/include
-export CPATH=$CPATH:$CPATH:$APP_GEOS/include:$APP_GDAL/include:$APP_PROJ/include
-export LIBRARY_PATH=$LIBRARY_PATH:$LIBRARY_PATH:$APP_GEOS/lib:$APP_GDAL/lib:$APP_PROJ/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LD_LIBRARY_PATH:$APP_GEOS/lib:$APP_GDAL/lib:$APP_PROJ/lib
+export CPATH=$CPATH:$APP_GEOS/include:$APP_GDAL/include:$APP_PROJ/include
+export LIBRARY_PATH=$LIBRARY_PATH:$APP_GEOS/lib:$APP_GDAL/lib:$APP_PROJ/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$APP_GEOS/lib:$APP_GDAL/lib:$APP_PROJ/lib
 EOF
 
 
 echo $PATH
 echo $MYPATH
 echo $LD_LIBRARY_PATH
+echo $CACHE_DIR
+echo $BUILD_DIR
 echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # Bundle workaround
